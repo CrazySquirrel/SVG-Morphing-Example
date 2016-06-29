@@ -1,0 +1,747 @@
+@import "WebProfyBase";
+@import "CSTiles-1.2.0";
+@import "jquery.datetimepicker";
+
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_100-webfont", 100, normal);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_100_Italic-webfont", 100, italic);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_300-webfont", 300, normal);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_300_Italic-webfont", 300, italic);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_500-webfont", 500, normal);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_500_Italic-webfont", 500, italic);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_700-webfont", 700, normal);
+@include font-face-full("MuseoSansCyrl", "MuseoSansCyrl_700_Italic-webfont", 700, italic);
+
+@include font-face-full("PTSans", "pts55f-webfont", normal, normal);
+@include font-face-full("PTSans", "pts56f-webfont", normal, italic);
+@include font-face-full("PTSans", "pts75f-webfont", bold, normal);
+@include font-face-full("PTSans", "pts76f-webfont", bold, italic);
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0
+}
+
+[hidden], template {
+  display: none
+}
+
+a {
+  background-color: transparent
+}
+
+a:active, a:hover {
+  outline: 0
+}
+
+abbr[title] {
+  border-bottom: 1px dotted
+}
+
+b, strong {
+  font-weight: bold
+}
+
+dfn {
+  font-style: italic
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0
+}
+
+mark {
+  background: #ff0;
+  color: #000
+}
+
+small {
+  font-size: 80%
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline
+}
+
+sup {
+  top: -0.5em
+}
+
+sub {
+  bottom: -0.25em
+}
+
+img {
+  border: 0
+}
+
+svg:not(:root) {
+  overflow: hidden
+}
+
+figure {
+  margin: 1em 40px
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0
+}
+
+pre {
+  overflow: auto
+}
+
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0
+}
+
+button {
+  overflow: visible
+}
+
+button, select {
+  text-transform: none
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer
+}
+
+button[disabled], html input[disabled] {
+  cursor: default
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0
+}
+
+input {
+  line-height: normal
+}
+
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  height: auto
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em
+}
+
+legend {
+  border: 0;
+  padding: 0
+}
+
+textarea {
+  overflow: auto
+}
+
+optgroup {
+  font-weight: bold
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+td, th {
+  padding: 0
+}
+
+* {
+  -webkit-text-size-adjust: 100%;
+}
+
+.page {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+html, body, .page {
+  width: 100%;
+  height: 100%;
+  background: $color-blackish-blue;
+}
+
+.page-slide {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 100%;
+    @include inline-block;
+    vertical-align: middle;
+  }
+  &.is-slide-1 {
+    position: fixed;
+    left:0;
+    top:0;
+    background: $color-raspberry;
+
+    #logotype {
+      width: 90%;
+
+      path {
+        fill: $color-white;
+      }
+      #logotype-webprofy,
+      #logotype-achievements {
+        @include opacity(0);
+      }
+      #logotype-projects-text-1,
+      #logotype-projects-text-2,
+      #logotype-staff-text-1,
+      #logotype-staff-text-2,
+      #logotype-rating-text-1,
+      #logotype-rating-text-2,
+      #logotype-experience-text-1,
+      #logotype-experience-text-2 {
+        @include opacity(0);
+      }
+    }
+    #advantages {
+      width: 90%;
+    }
+  }
+  &.is-slide-2 {
+    height:auto;
+    padding: 0 0 200px 0;
+
+    .page-slide__content {
+      position: relative;
+    }
+    #advantages {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      circle {
+        fill: #ffffff;
+      }
+      path {
+        fill: none;
+        stroke: #ffffff;
+        stroke-width: 3;
+
+        &#advantages__progress {
+
+        }
+        &#advantages__bg {
+          @include opacity(0.1);
+        }
+      }
+    }
+  }
+  &.is-slide-4{
+    height:auto;
+  }
+}
+
+html.touch{
+  .page-slide {
+    &.is-slide-1 {
+      position: relative;
+    }
+  }
+}
+
+@media all and (max-width:1023px){
+  .page-slide {
+    &.is-slide-2 {
+      padding: 0 0 20px 0;
+    }
+  }
+}
+@media all and (max-width:767px){
+  .page-slide {
+    &.is-slide-4 {
+      display: none;
+    }
+  }
+}
+@media all and (max-width:419px){
+  .page-slide {
+    height:50%;
+  }
+}
+
+
+.page-slide__content {
+  max-width: 1280px;
+  width:98%;
+  @include box-sizing(border-box);
+  padding: 0 20px;
+  @include inline-block;
+  vertical-align: middle;
+  height: auto;
+}
+
+.advantages-block__title {
+  font-family: "MuseoSansCyrl";
+  font-weight: 700;
+  color: $color-white;
+  font-size: 48px;
+  padding: 100px 0;
+  @include box-sizing(border-box);
+}
+
+.advantages-block__item:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  display: block;
+  clear: both;
+}
+
+.advantages-block__item-name {
+  width: 40%;
+  float: left;
+  text-align: right;
+  font-family: "MuseoSansCyrl";
+  font-weight: 700;
+  color: $color-white;
+  font-size: 36px;
+  line-height: 1.25;
+  @include box-sizing(border-box);
+  padding: 100px 4% 100px 4%;
+  position: relative;
+  z-index:2;
+}
+
+.advantages-block__item-description {
+  width: 60%;
+  float: right;
+  text-align: left;
+  font-family: "MuseoSansCyrl";
+  font-weight: 500;
+  color: $color-white;
+  font-size: 20px;
+  line-height: 2.25;
+  @include box-sizing(border-box);
+  padding: 106px 4% 100px 4%;
+  @include opacity(0);
+  position: relative;
+  z-index:2;
+}
+
+@media all and (max-width:1279px){
+  .advantages-block__item-name {
+    font-size: 32px;
+  }
+  .advantages-block__item-description {
+    padding: 104px 4% 100px 4%;
+    line-height: 2;
+  }
+}
+@media all and (max-width:1023px){
+  .advantages-block__title{
+    padding:20px 0;
+    font-size: 40px;
+  }
+  #advantages{
+    @include opacity(0);
+  }
+  .page-slide__content{
+    background: inherit;
+  }
+  .advantages-block,
+  .advantages-block__item,
+  .advantages-block__item-name,
+  .advantages-block__item-description {
+    width:100%;
+    background: inherit;
+    text-align: left !important;
+    padding:20px 0 10px 0;
+    height:auto !important;
+    opacity:1 !important;
+
+    br{
+      display: none;
+    }
+  }
+}
+@media all and (max-width:767px){
+  .advantages-block__title{
+    font-size: 30px;
+    padding:10px 0;
+  }
+  .advantages-block__item-name {
+    font-size: 24px;
+    padding:10px 0 5px 0;
+  }
+  .advantages-block__item-description{
+    font-size:16px;
+    padding:5px 0 10px 0;
+  }
+}
+@media all and (max-width:419px){
+  .advantages-block__title{
+    font-size: 24px;
+    padding:5px 0;
+  }
+  .advantages-block__item-name {
+    font-size: 18px;
+    padding:5px 0;
+  }
+  .advantages-block__item-description{
+    font-size:12px;
+    padding:5px 0;
+  }
+}
+
+.advantages-block__item:nth-child(odd) {
+  .advantages-block__item-name {
+    float: right;
+    text-align: left;
+  }
+  .advantages-block__item-description {
+    float: left;
+    text-align: right;
+  }
+}
+
+.job-block {
+  h1 {
+    font-family: "MuseoSansCyrl";
+    font-weight: 700;
+    color: $color-white;
+    font-size: 48px;
+  }
+  p {
+    font-family: "MuseoSansCyrl";
+    font-weight: 500;
+    color: $color-white;
+    font-size: 18px;
+  }
+}
+
+.job-block__item {
+  float: left;
+  width: 33.3%;
+  text-align: left;
+
+  h2 {
+    font-family: "MuseoSansCyrl";
+    font-weight: 700;
+    color: $color-white;
+    font-size: 36px;
+    line-height: 1.25;
+  }
+  ul, li {
+    font-family: "MuseoSansCyrl";
+    font-weight: 500;
+    color: $color-white;
+    font-size: 20px;
+    line-height: 2.25;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media all and (max-width:1279px){
+  .job-block__item {
+    width:50%;
+
+    &:last-child{
+      width:100%;
+    }
+  }
+}
+@media all and (max-width:1023px){
+  .job-block {
+    h1 {
+      font-size:40px;
+      text-align: left;
+    }
+  }
+  .job-block__item {
+    width:100%;
+
+    h2{
+      font-size: 32px;
+    }
+  }
+}
+@media all and (max-width:767px){
+  .job-block {
+    h1 {
+      font-size:30px;
+    }
+  }
+  .job-block__item {
+    h2{
+      font-size: 24px;
+    }
+    ul, li {
+      font-size: 16px;
+    }
+  }
+}
+@media all and (max-width:419px){
+  .job-block {
+    h1 {
+      font-size:24px;
+    }
+  }
+  .job-block__item {
+    h2{
+      font-size: 18px;
+    }
+    ul, li {
+      font-size: 12px;
+    }
+  }
+}
+
+.job-block__items {
+  &:after {
+    content: "";
+    width: 100%;
+    height: 0;
+    display: block;
+    clear: both;
+  }
+}
+
+.rub {
+  font-family: "PTSans";
+}
+
+.team-block {
+  h2 {
+    font-family: "MuseoSansCyrl";
+    font-weight: 700;
+    color: $color-white;
+    font-size: 48px;
+  }
+}
+
+.team-block__item-name,
+.team-block__item-title,
+.team-block__item-experience {
+  font-family: "MuseoSansCyrl";
+  font-weight: 500;
+  color: $color-white;
+  width: 100%;
+  @include inline-block;
+}
+
+.team-block__item-name {
+  font-size: 100%;
+}
+
+.team-block__item-title {
+  font-size: 90%;
+}
+
+.team-block__item-experience {
+  font-size: 80%;
+}
+
+.team-block__item-text {
+  font-size: 70%;
+}
+
+.cstiles__item[data-cstiles-size='1,1'] {
+  font-size: 20px;
+}
+
+.cstiles__item[data-cstiles-size='2,2'] {
+  font-size: 30px;
+}
+
+.cstiles__item[data-cstiles-size='3,3'] {
+  font-size: 40px;
+}
+
+.job-form {
+  h2 {
+    font-family: "MuseoSansCyrl";
+    font-weight: 700;
+    color: $color-white;
+    font-size: 48px;
+  }
+  label {
+    display: block;
+    font-family: "MuseoSansCyrl";
+    font-weight: 500;
+    color: $color-white;
+    font-size: 20px;
+    line-height: 2.25;
+  }
+  input[type='text'], input[type='tel'], input[type='email'] {
+    width: 100%;
+    @include box-sizing(border-box);
+    padding: 10px;
+    outline: none;
+    background: none;
+    border: $color-white 1px solid;
+    font-family: "MuseoSansCyrl";
+    font-weight: 500;
+    color: $color-white;
+    font-size: 16px;
+    margin: 45px 0 20px 0;
+    position: relative;
+    z-index:2;
+    @include border-radius(4px);
+    
+    &+label{
+      position: absolute;
+      font-size: 16px;
+      padding:0 10px;
+      margin:-57px 0 0 0;
+      z-index:1;
+
+      @include transition-property(font-size,margin);
+      @include transition-duration(0.2s);
+      @include transition-timing-function(ease-in);
+    }
+    &.is-focus,
+    &:focus{
+      &+label{
+        margin:-106px 0 0 0;
+        font-size: 20px;
+      }
+    }
+  }
+  input[type='button'],input[type='submit']{
+    background: #1071a0;
+    border:none;
+    outline:none;
+    width: 100%;
+    @include box-sizing(border-box);
+    padding: 10px;
+    font-family: "MuseoSansCyrl";
+    font-weight: 500;
+    color: $color-white;
+    font-size: 16px;
+    margin:107px 0 0 0;
+    @include border-radius(4px);
+
+    &:hover{
+      background: #02b3e4;
+    }
+  }
+  &:after {
+    content: "";
+    width: 100%;
+    height: 0;
+    display: block;
+    clear: both;
+  }
+  .xdsoft_datetimepicker {
+    width: 100%;
+    padding: 0;
+    border:none;
+    @include border-radius(4px);
+
+    .xdsoft_datepicker {
+      width: 80%;
+      margin: 0;
+    }
+    .xdsoft_timepicker {
+      width: 20%;
+      margin: 0;
+
+      .xdsoft_prev,.xdsoft_next{
+        @include opacity(0);
+      }
+    }
+  }
+}
+
+.job-form__left,
+.job-form__right {
+  float: left;
+  width: 50%;
+  text-align: left;
+  @include box-sizing(border-box);
+  padding: 0px 40px;
+}
+
+@media all and (max-width:1023px){
+  .job-form__left,
+  .job-form__right {
+    width:100%;
+    padding:0;
+    float:none;
+  }
+  .job-form {
+    h2 {
+      font-size:40px;
+    }
+    input[type='button'],input[type='submit']{
+      margin:57px 0 0 0;
+    }
+  }
+}
+@media all and (max-width:767px){
+  .job-form {
+    h2 {
+      font-size: 30px;
+    }
+  }
+}
+@media all and (max-width:419px){
+  .job-form {
+    h2 {
+      font-size: 24px;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "compass/css3"; 
+
+$media-retina: "only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)"; // retina
+
+@mixin font-face-full($fontfamily,$font,$width,$style){
+	$file: $fontfamily + "/" + $font;
+	@include font-face($fontfamily, font-files($file + ".ttf", $file + ".woff", $file + ".svg"), $file + ".eot", $width, $style);
+}
+
+@mixin retinabg($url, $url2x, $size, $position, $repeat) {
+	background-image: image-url($url);
+	background-repeat: $repeat;
+	background-position: $position;
+	background-size: $size;
+	@media #{$media-retina} {
+		background-image: image-url($url2x);
+		background-size: $size;
+	}
+}
+
+@function fontsize($base,$size){
+	@return percentage($size/$base);	
+}
+
+@mixin ol($content,$iteration){
+	ol{
+		$point: point + $iteration;
+		$conte: $content counter($point) ".";
+		counter-reset: $point;
+		
+		li{
+			padding:0 0 0 15+(10*(10-$iteration))+px;
+			
+			&:before{
+				content: $conte;
+				counter-increment: $point;	
+			}	
+		}
+		@if $iteration > 1 {
+			@include ol($conte,$iteration - 1);
+		}
+	}
+}
