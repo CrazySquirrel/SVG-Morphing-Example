@@ -1,0 +1,10 @@
+{
+  "name": "SVG-Morphing-Example",
+  "version": "1.0.0",
+  "author": "Sergey Yastrebov <info@crazysquirrel.ru>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CrazySquirrel/SVG-Morphing-Example.git"
+  }
+}
